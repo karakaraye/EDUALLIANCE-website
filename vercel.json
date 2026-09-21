@@ -1,23 +1,5 @@
 {
-  "cleanUrls": true,
-  "headers": [
-    {
-      "source": "/css/(.*)",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/css; charset=UTF-8"
-        }
-      ]
-    },
-    {
-      "source": "/js/(.*)",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/javascript; charset=UTF-8"
-        }
-      ]
-    }
-  ]
+  "buildCommand": "echo 'Static build ready'",
+  "outputDirectory": ".",
+  "cleanUrls": true
 }
