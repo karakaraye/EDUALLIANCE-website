@@ -1,0 +1,529 @@
+/* ==========================================================================
+   EDUALLIANCE - School Loan Application Portal Styles & Form Engine
+   ========================================================================== */
+
+.app-portal-layout {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Step Wizard Progress Bar */
+.wizard-progress-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.75rem;
+  position: relative;
+}
+
+.wizard-progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 5%;
+  right: 5%;
+  height: 3px;
+  background: var(--slate-200);
+  z-index: 0;
+}
+
+.wizard-progress-fill {
+  position: absolute;
+  top: 20px;
+  left: 5%;
+  height: 3px;
+  background: var(--teal-600);
+  z-index: 1;
+  transition: width 0.4s ease;
+  width: 0%;
+}
+
+.wizard-step-node {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-primary);
+  padding: 0 0.5rem;
+}
+
+.wizard-step-bubble {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--slate-300);
+  color: var(--slate-500);
+  font-size: 0.95rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+}
+
+.wizard-step-node.active .wizard-step-bubble {
+  background: var(--navy-900);
+  border-color: var(--navy-900);
+  color: var(--gold-400);
+  box-shadow: 0 0 0 5px rgba(10, 30, 63, 0.12);
+}
+
+.wizard-step-node.completed .wizard-step-bubble {
+  background: var(--emerald-600);
+  border-color: var(--emerald-600);
+  color: var(--white);
+}
+
+.wizard-step-label {
+  font-size: 0.775rem;
+  font-weight: 700;
+  color: var(--slate-500);
+  text-align: center;
+  max-width: 100px;
+  line-height: 1.25;
+}
+
+.wizard-step-node.active .wizard-step-label {
+  color: var(--navy-900);
+  font-weight: 800;
+}
+
+/* Form Container Card */
+.form-card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  padding: 3rem;
+  margin-bottom: 2rem;
+}
+
+.step-content-pane {
+  display: none;
+}
+
+.step-content-pane.active {
+  display: block;
+  animation: fadeInStep 0.35s ease;
+}
+
+@keyframes fadeInStep {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.step-pane-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--slate-100);
+}
+
+.step-pane-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--navy-900);
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.step-pane-desc {
+  font-size: 0.9125rem;
+  color: var(--slate-600);
+}
+
+/* Form Grid & Input Fields */
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--slate-800);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-label .required-star {
+  color: #e11d48;
+  margin-left: 0.2rem;
+}
+
+.form-label .helper-tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--slate-400);
+}
+
+.form-control-wrap {
+  position: relative;
+}
+
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--slate-200);
+  background: var(--slate-50);
+  font-size: 0.9375rem;
+  color: var(--slate-900);
+  transition: all var(--transition-fast);
+}
+
+.form-control-wrap svg {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--slate-400);
+  pointer-events: none;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--teal-700);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(13, 107, 99, 0.1);
+}
+
+.form-input.error, .form-select.error, .form-textarea.error {
+  border-color: #e11d48;
+  background: #fff1f2;
+}
+
+.form-error-msg {
+  font-size: 0.775rem;
+  color: #e11d48;
+  font-weight: 600;
+  margin-top: 0.25rem;
+  display: none;
+}
+
+.form-group.has-error .form-error-msg {
+  display: block;
+}
+
+/* Radio Cards (Selection of School Category & Facility) */
+.radio-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.radio-card-label {
+  border: 1.5px solid var(--slate-200);
+  border-radius: var(--radius-md);
+  background: var(--slate-50);
+  padding: 1rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.radio-card-label input[type="radio"] {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  accent-color: var(--teal-700);
+}
+
+.radio-card-label:hover {
+  border-color: var(--slate-400);
+  background: var(--white);
+}
+
+.radio-card-label.selected {
+  border-color: var(--teal-700);
+  background: rgba(13, 107, 99, 0.05);
+  box-shadow: 0 0 0 1px var(--teal-700);
+}
+
+.radio-card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(13, 107, 99, 0.1);
+  color: var(--teal-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.radio-card-title {
+  font-size: 0.9125rem;
+  font-weight: 800;
+  color: var(--navy-900);
+}
+
+.radio-card-desc {
+  font-size: 0.775rem;
+  color: var(--slate-500);
+  line-height: 1.35;
+}
+
+/* Document Upload Dropzones */
+.upload-group-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.doc-upload-box {
+  border: 2px dashed var(--slate-300);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  background: var(--slate-50);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.doc-upload-box:hover {
+  border-color: var(--teal-600);
+  background: rgba(13, 107, 99, 0.02);
+}
+
+.doc-upload-icon {
+  font-size: 1.75rem;
+  color: var(--slate-400);
+  margin-bottom: 0.5rem;
+}
+
+.doc-upload-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--navy-900);
+  margin-bottom: 0.25rem;
+}
+
+.doc-upload-sub {
+  font-size: 0.75rem;
+  color: var(--slate-500);
+}
+
+.doc-uploaded-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--emerald-50);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-md);
+  margin-top: 0.6rem;
+  font-size: 0.7875rem;
+  font-weight: 600;
+  color: var(--emerald-600);
+}
+
+/* Form Action Buttons Bar */
+.form-actions-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--slate-200);
+  margin-top: 2rem;
+}
+
+.btn-form-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--slate-600);
+  padding: 0.8rem 1.4rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--slate-300);
+  background: var(--white);
+  transition: all var(--transition-fast);
+}
+
+.btn-form-back:hover {
+  background: var(--slate-100);
+  color: var(--navy-900);
+}
+
+.btn-form-next {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--navy-900) 0%, var(--teal-800) 100%);
+  padding: 0.85rem 1.8rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 12px rgba(10, 30, 63, 0.2);
+  transition: all var(--transition-base);
+}
+
+.btn-form-next:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(10, 30, 63, 0.28);
+}
+
+.btn-form-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--navy-950);
+  background: linear-gradient(135deg, var(--gold-400) 0%, var(--gold-500) 100%);
+  padding: 0.9rem 2rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 6px 20px rgba(217, 119, 6, 0.35);
+  transition: all var(--transition-base);
+}
+
+.btn-form-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(217, 119, 6, 0.45);
+}
+
+/* Institutional Declaration Box */
+.declaration-agreement-box {
+  background: var(--slate-50);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.84rem;
+  color: var(--slate-700);
+  line-height: 1.6;
+}
+
+.checkbox-control-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--navy-900);
+}
+
+.checkbox-control-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 0.2rem;
+  accent-color: var(--teal-700);
+}
+
+/* Application Summary Receipt Card (After Submission) */
+.submission-success-card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-xl);
+  padding: 3.5rem;
+  text-align: center;
+}
+
+.success-seal-wrap {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--emerald-50);
+  color: var(--emerald-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  margin: 0 auto 1.75rem auto;
+  border: 3px solid rgba(16, 185, 129, 0.2);
+}
+
+.app-ref-badge-display {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--navy-950);
+  color: var(--gold-400);
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-md);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin: 1.5rem 0;
+  border: 1px solid rgba(217, 119, 6, 0.3);
+}
+
+.summary-details-table {
+  width: 100%;
+  max-width: 680px;
+  margin: 2rem auto;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.summary-details-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--slate-100);
+  font-size: 0.875rem;
+}
+
+.summary-details-table td.field-title {
+  color: var(--slate-500);
+  font-weight: 600;
+  width: 45%;
+}
+
+.summary-details-table td.field-val {
+  color: var(--navy-900);
+  font-weight: 700;
+}
+
+/* Print Styles */
+@media print {
+  .site-header, .site-footer, .wizard-progress-bar, .form-actions-bar, .top-notice-bar {
+    display: none !important;
+  }
+  .form-card, .submission-success-card {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-card {
+    padding: 1.75rem;
+  }
+  .form-grid-2, .form-grid-3, .upload-group-grid, .radio-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .wizard-step-label {
+    display: none;
+  }
+}
