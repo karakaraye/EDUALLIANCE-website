@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const PORT = process.env.PORT || 5173;
-const PUBLIC_DIR = __dirname;
+const PUBLIC_DIR = path.resolve(__dirname, '..');
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=UTF-8',
@@ -23,7 +23,12 @@ const server = http.createServer((req, res) => {
   let cleanUrl = req.url.split('?')[0];
   if (cleanUrl === '/') cleanUrl = '/index.html';
 
-  const filePath = path.join(PUBLIC_DIR, cleanUrl);
+  let filePath = path.join(PUBLIC_DIR, cleanUrl);
+
+  // Support clean URLs locally (e.g. /apply -> /apply.html)
+  if (!path.extname(filePath) && fs.existsSync(filePath + '.html')) {
+    filePath = filePath + '.html';
+  }
 
   // Security check to prevent directory traversal
   if (!filePath.startsWith(PUBLIC_DIR)) {
