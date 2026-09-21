@@ -1,0 +1,18 @@
+{
+  "name": "edualliance-nigeria",
+  "version": "1.0.0",
+  "description": "Institutional Education Financing for Nigerian Schools",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "education-finance",
+    "school-loans",
+    "nigeria",
+    "institutional-credit"
+  ],
+  "author": "EDUALLIANCE",
+  "license": "UNLICENSED"
+}
